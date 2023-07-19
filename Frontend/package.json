@@ -49,6 +49,7 @@
 		"openai": "^3.3.0",
 		"sass": "^1.63.6",
 		"sse.js": "^0.6.1",
+		"svelte-markdown": "^0.2.3",
 		"tailwind-merge": "^1.14.0"
 	}
 }

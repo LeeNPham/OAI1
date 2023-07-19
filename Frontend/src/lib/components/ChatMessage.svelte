@@ -3,6 +3,8 @@
 	export let type: ChatCompletionRequestMessageRoleEnum;
 	export let message: any | string;
 	import jarvisDefault from '$lib/images/jarvisDefault.gif';
+
+	import SvelteMarkdown from 'svelte-markdown';
 </script>
 
 <div class="flex {type === 'user' ? 'flex-row-reverse' : 'flex-row'} w-full px-10">
@@ -21,7 +23,7 @@
 				? 'rounded-l-lg rounded-b-lg bg-gray-800/50 text-pink-400'
 				: 'rounded-r-lg rounded-b-lg bg-gray-800/50 text-cyan-300'}"
 		>
-			{message}
+			<SvelteMarkdown source={message} />
 		</div>
 	</div>
 </div>
