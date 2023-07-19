@@ -2,7 +2,7 @@
 	import type { ChatCompletionRequestMessageRoleEnum } from 'openai';
 	export let type: ChatCompletionRequestMessageRoleEnum;
 	export let message: any | string;
-	import jarvisDefault from '$lib/images/jarvisDefault.gif';
+	import jarvisDefault from '$lib/images/Glowing_Orb.gif';
 
 	import SvelteMarkdown from 'svelte-markdown';
 </script>
