@@ -6,6 +6,7 @@
 	import { fade } from 'svelte/transition';
 	import TimeAndDateDisplay from '$lib/components/TimeAndDateDisplay.svelte';
 	import JarvisTriangle from '$lib/components/JarvisTriangle.svelte';
+	import Weather from '$lib/components/Weather.svelte';
 
 	let query: string = '';
 	let answer: string = '';
@@ -81,6 +82,7 @@
 		/>
 		<JarvisTriangle />
 		<TimeAndDateDisplay />
+		<Weather />
 	</div>
 
 	<h1
