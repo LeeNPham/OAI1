@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-
+	import { PUBLIC_WEATHER_API } from '$env/static/public';
 	let weatherData = null;
 	let userLocation = '';
 
@@ -10,7 +10,7 @@
 			const { latitude, longitude } = position.coords;
 
 			// Fetch weather data using latitude and longitude
-			const apiKey = '61883d2adbd44cf48f872347231907';
+			const apiKey = PUBLIC_WEATHER_API;
 			const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${latitude},${longitude}`;
 
 			const response = await fetch(apiUrl);
@@ -27,14 +27,26 @@
 	<div
 		class="text-cyan-300 w-[200px] bg-cyan-300/10 shadow-2xl shadow-cyan-300/20 text-center flex flex-col gap-1 absolute -bottom-20 -left-56 p-4 border border-x-4 border-y-2 border-cyan-300 rounded-r-3xl rounded-bl-3xl"
 	>
-		<div class="underline">Location:</div>
-		<div>{userLocation}</div>
-		<div class="underline">Temperature:</div>
-		<div>{weatherData.temp_c}°C</div>
-		<div class="underline">Condition:</div>
-		<div>{weatherData.condition.text}</div>
-		<div class="underline">Humidity:</div>
-		<div>{weatherData.humidity}%</div>
+		<div
+			class="font-bold border-l-2 border-b-4 border border-cyan-300 px-2 bg-black/90 rounded-tr-2xl"
+		>
+			<div class="underline">Location:</div>
+			<div>{userLocation}</div>
+		</div>
+		<div class="font-bold border-l-2 border-b-4 border border-cyan-300 px-2 bg-black/90">
+			<div class="underline">Temperature:</div>
+			<div>{weatherData.temp_c}°C</div>
+		</div>
+		<div class="font-bold border-l-2 border-b-4 border border-cyan-300 px-2 bg-black/90">
+			<div class="underline">Condition:</div>
+			<div>{weatherData.condition.text}</div>
+		</div>
+		<div
+			class="font-bold border-l-2 border-b-4 border border-cyan-300 px-2 bg-black/90 rounded-br-2xl"
+		>
+			<div class="underline">Humidity:</div>
+			<div>{weatherData.humidity}%</div>
+		</div>
 	</div>
 {:else}
 	<div>Loading weather information...</div>
