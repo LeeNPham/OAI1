@@ -72,7 +72,7 @@
 	<meta name="description" content="Go look at me! my github is /leenpham" />
 </svelte:head>
 
-<div class="relative flex flex-col pt-4 w-full px-8 items-center gap-2 z-0">
+<div class="relative flex flex-col pt-4 w-full px-8 items-center z-0">
 	<div class="absolute top-28 bg-cyan-300 rounded-full shadow-cyan-300 shadow-lg -z-10">
 		<img
 			transition:fade
@@ -86,7 +86,7 @@
 	</div>
 
 	<h1
-		class="text-3xl font-bold w-full text-center text-cyan-300 px-2 py-1 border-cyan-300 border rounded-xl shadow-cyan-300 shadow-md"
+		class="text-3xl font-bold w-full text-center text-cyan-300 px-2 py-1 border-cyan-200 border rounded-t-3xl shadow-cyan-300 shadow-xl"
 	>
 		J.A.R.V.I.S
 		<div class="w-full text-cyan-300 tracking-widest text-center text-md font-mono">
@@ -95,7 +95,7 @@
 	</h1>
 
 	<div
-		class="h-[650px] w-full bg-gray-900/50 border shadow-lg border-cyan-300 shadow-cyan-300 rounded-3xl p-4 overflow-y-auto flex flex-col gap-4"
+		class="h-[650px] w-full bg-gray-900/50 border shadow-lg border-cyan-200 shadow-cyan-300 p-4 overflow-y-auto flex flex-col gap-4"
 	>
 		<div class="flex flex-col gap-2">
 			<ChatMessage type="assistant" message="Hello, how may I assist you today?" />
@@ -112,7 +112,7 @@
 		<div class="" bind:this={scrollToDiv} />
 	</div>
 	<form
-		class="flex w-full rounded-3xl gap-4 bg-gray-900/50 p-4 shadow-lg shadow-cyan-300"
+		class="flex w-full rounded-b-3xl gap-4 bg-gray-900/50 p-4 shadow-lg shadow-cyan-300 border-cyan-200 border-t-0 border"
 		on:submit|preventDefault={() => handleSubmit()}
 	>
 		<input

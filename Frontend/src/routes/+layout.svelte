@@ -22,7 +22,7 @@
 		flex-direction: column;
 		padding: 1rem;
 		width: 100%;
-		max-width: 887px;
+		max-width: 1000px;
 		min-width: 887px;
 		margin: 0 auto;
 		box-sizing: border-box;

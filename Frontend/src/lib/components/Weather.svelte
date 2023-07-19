@@ -25,24 +25,24 @@
 
 {#if weatherData && userLocation}
 	<div
-		class="text-cyan-300 w-[200px] bg-cyan-300/10 shadow-2xl shadow-cyan-300/20 text-center flex flex-col gap-1 absolute -bottom-20 -left-56 p-4 border border-x-4 border-y-2 border-cyan-300 rounded-r-3xl rounded-bl-3xl"
+		class="text-cyan-300 w-[200px] bg-cyan-300/10 shadow-2xl shadow-cyan-300/20 text-center flex flex-col gap-1 absolute top-[200px] -left-[500px] p-4 border border-x-4 border-y-2 border-cyan-300 rounded-r-3xl rounded-bl-3xl"
 	>
 		<div
-			class="font-bold border-l-2 border-b-4 border border-cyan-300 px-2 bg-black/90 rounded-tr-2xl"
+			class="font-bold border-l-2 border-b-4 border border-cyan-200 px-2 bg-black/90 rounded-tr-2xl"
 		>
 			<div class="underline">Location:</div>
 			<div>{userLocation}</div>
 		</div>
-		<div class="font-bold border-l-2 border-b-4 border border-cyan-300 px-2 bg-black/90">
+		<div class="font-bold border-l-2 border-b-4 border border-cyan-200 px-2 bg-black/90">
 			<div class="underline">Temperature:</div>
 			<div>{weatherData.temp_c}°C</div>
 		</div>
-		<div class="font-bold border-l-2 border-b-4 border border-cyan-300 px-2 bg-black/90">
+		<div class="font-bold border-l-2 border-b-4 border border-cyan-200 px-2 bg-black/90">
 			<div class="underline">Condition:</div>
 			<div>{weatherData.condition.text}</div>
 		</div>
 		<div
-			class="font-bold border-l-2 border-b-4 border border-cyan-300 px-2 bg-black/90 rounded-br-2xl"
+			class="font-bold border-l-2 border-b-4 border border-cyan-200 px-2 bg-black/90 rounded-br-2xl"
 		>
 			<div class="underline">Humidity:</div>
 			<div>{weatherData.humidity}%</div>

@@ -1,4 +1,4 @@
-<svg class="absolute top-0 -right-56" width="210" height="210" id="jarvis-like">
+<svg class="absolute top-0 -right-[500px]" width="210" height="210" id="jarvis-like">
 	<defs>
 		<filter id="light-circle">
 			<feGaussianBlur result="blurred" in="SourceGraphic" stdDeviation="1" />
