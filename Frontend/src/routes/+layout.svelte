@@ -7,11 +7,6 @@
 	<main>
 		<slot />
 	</main>
-	<footer class="text-cyan-300">
-		<p>
-			My <a class="text-cyan-300" href="https://leenpham.gitlab.io">OpenAI Chat</a> in SvelteKit
-		</p>
-	</footer>
 </div>
 
 <style>
