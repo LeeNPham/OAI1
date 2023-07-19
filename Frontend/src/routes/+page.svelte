@@ -1,4 +1,5 @@
 <script lang="ts">
+
 	import ChatMessage from '$lib/components/ChatMessage.svelte';
 	import jarvisDefault from '$lib/images/jarvisDefault.gif';
 	import type { ChatCompletionRequestMessage } from 'openai';

@@ -5,8 +5,10 @@
 	import jarvisDefault from '$lib/images/Glowing_Orb.gif';
 	import SvelteMarkdown from 'svelte-markdown';
 	import { onMount } from 'svelte';
+	import AudioPlayer from './AudioPlayer.svelte';
 </script>
 
+<AudioPlayer {message}/>
 <div class="flex {type === 'user' ? 'flex-row-reverse' : 'flex-row'} w-full px-10">
 	<img
 		class="h-14 min-w-14 rounded-full object-cover aspect-square mix-blend-exclusion"
