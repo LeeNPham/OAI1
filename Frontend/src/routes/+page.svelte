@@ -88,9 +88,9 @@
 	<h1
 		class="text-3xl font-bold w-full text-center text-cyan-300 px-2 py-1 border-cyan-200 border rounded-t-3xl shadow-cyan-300 shadow-xl"
 	>
-		J.A.R.V.I.S
+		F.L.O.B.O.T.
 		<div class="w-full text-cyan-300 tracking-widest text-center text-md font-mono">
-			Just A Rather Very Intelligent System
+			Fortified Log-based Observation and Tracking
 		</div>
 	</h1>
 
