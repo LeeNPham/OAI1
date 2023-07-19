@@ -1,12 +1,12 @@
 <script lang='ts'>
-	import { PUBLIC_ELEVEN_LABS } from '$env/static/public';
+	import { PUBLIC_ELEVEN_LABS, PUBLIC_VOICE_ID } from '$env/static/public';
 	import axios from 'axios';
 	export let message: String
 
 	async function convertTextToSpeech() {
 		try {
 			const response = await axios.post(
-				'https://api.elevenlabs.io/v1/text-to-speech/HqOrzJvDf9jFg9WwqYxG/stream',
+				`https://api.elevenlabs.io/v1/text-to-speech/${PUBLIC_VOICE_ID}/stream`,
 				{
 					text: message,
 					model_id: 'eleven_monolingual_v1',
