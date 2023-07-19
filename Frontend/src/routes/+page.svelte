@@ -1,0 +1,118 @@
+<script lang="ts">
+	import ChatMessage from '$lib/components/ChatMessage.svelte';
+	import jarvisDefault from '$lib/images/jarvisDefault.gif';
+	import type { ChatCompletionRequestMessage } from 'openai';
+	import { SSE } from 'sse.js';
+	import { fade } from 'svelte/transition';
+
+	let query: string = '';
+	let answer: string = '';
+	let loading: boolean = false;
+	let chatMessages: ChatCompletionRequestMessage[] = [];
+	let scrollToDiv: HTMLDivElement;
+
+	function scrollToBottom() {
+		setTimeout(function () {
+			scrollToDiv.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+		}, 100);
+	}
+
+	const handleSubmit = async () => {
+		loading = true;
+		chatMessages = [...chatMessages, { role: 'user', content: query }];
+
+		const eventSource = new SSE('/api/chat', {
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			payload: JSON.stringify({ messages: chatMessages })
+		});
+
+		query = '';
+
+		eventSource.addEventListener('error', handleError);
+
+		eventSource.addEventListener('message', (e) => {
+			scrollToBottom();
+			try {
+				loading = false;
+				if (e.data === '[DONE]') {
+					chatMessages = [...chatMessages, { role: 'assistant', content: answer }];
+					answer = '';
+					return;
+				}
+
+				const completionResponse = JSON.parse(e.data);
+				const [{ delta }] = completionResponse.choices;
+
+				if (delta.content) {
+					answer = (answer ?? '') + delta.content;
+				}
+			} catch (err) {
+				handleError(err);
+			}
+		});
+		eventSource.stream();
+		scrollToBottom();
+	};
+
+	function handleError<T>(err: T) {
+		loading = false;
+		query = '';
+		answer = '';
+		console.error(err);
+	}
+</script>
+
+<svelte:head>
+	<title>Home</title>
+	<meta name="description" content="Svelte demo app" />
+</svelte:head>
+
+<div class="relative flex flex-col pt-4 w-full px-8 items-center gap-2 z-0">
+	<div class="absolute top-28 bg-cyan-300 rounded-full shadow-cyan-300 shadow-lg -z-10">
+		<img
+			transition:fade
+			class="w-[400px] h-auto rounded-full object-cover aspect-square mix-blend-multiply"
+			src={jarvisDefault}
+			alt="avatar"
+		/>
+	</div>
+	<div>
+		<h1
+			class="text-2xl font-bold w-full text-center text-cyan-300 px-2 py-1 border-cyan-300 border rounded-xl shadow-cyan-300 shadow-md"
+		>
+			Jarvis Chat App
+		</h1>
+	</div>
+	<div
+		class="h-[500px] w-full bg-gray-900/50 border shadow-lg border-cyan-300 shadow-cyan-300 rounded-3xl p-4 overflow-y-auto flex flex-col gap-4"
+	>
+		<div class="flex flex-col gap-2">
+			<ChatMessage type="assistant" message="Hello, how may I assist you today?" />
+			{#each chatMessages as message}
+				<ChatMessage type={message.role} message={message.content} />
+			{/each}
+			{#if answer}
+				<ChatMessage type="assistant" message={answer} />
+			{/if}
+			{#if loading}
+				<ChatMessage type="assistant" message="Loading.." />
+			{/if}
+		</div>
+		<div class="" bind:this={scrollToDiv} />
+	</div>
+	<form
+		class="flex w-full rounded-3xl gap-4 border bg-gray-900/50 p-4 shadow-lg border-cyan-300 shadow-cyan-300"
+		on:submit|preventDefault={() => handleSubmit()}
+	>
+		<input
+			type="text"
+			class="w-full rounded-full bg-gray-600 text-cyan-300 focus:ring-0 focus:border-0 border-0"
+			bind:value={query}
+		/>
+		<button type="submit" class="text-cyan-300 border border-cyan-300 px-2 py-1 rounded-xl">
+			Send
+		</button>
+	</form>
+</div>
