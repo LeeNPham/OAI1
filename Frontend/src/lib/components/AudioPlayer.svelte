@@ -1,9 +1,9 @@
-<script lang='ts'>
+<script lang="ts">
 	import { PUBLIC_ELEVEN_LABS, PUBLIC_VOICE_ID } from '$env/static/public';
 	import jarvisDefault from '$lib/images/Glowing_Orb.gif';
 	import axios from 'axios';
-	export let message: string
-	export let type: string
+	export let message: string;
+	export let type: string;
 
 	async function convertTextToSpeech() {
 		try {
@@ -40,8 +40,12 @@
 	}
 </script>
 
-<button class="text-white" on:click={convertTextToSpeech}><img
-	class="h-14 min-w-14 rounded-full object-cover aspect-square mix-blend-exclusion"
-	src={type === 'user' ? 'https://ui-avatars.com/api/?name=Me' : jarvisDefault}
-	alt="{type} avatar"
-/></button>
+<button class="min-w-[60px]" on:click={convertTextToSpeech}
+	><img
+		class="h-14 min-w-14 rounded-full object-cover aspect-square {type === 'user'
+			? ''
+			: 'mix-blend-exclusion'}"
+		src={type === 'user' ? 'https://ui-avatars.com/api/?name=Me' : jarvisDefault}
+		alt="{type} avatar"
+	/></button
+>
