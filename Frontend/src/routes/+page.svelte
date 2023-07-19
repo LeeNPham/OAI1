@@ -89,10 +89,10 @@
 		class="text-3xl font-bold w-full text-center text-cyan-300 px-2 py-1 border-cyan-300 border rounded-xl shadow-cyan-300 shadow-md"
 	>
 		J.A.R.V.I.S
+		<div class="w-full text-cyan-300 tracking-widest text-center text-md font-mono">
+			Just A Rather Very Intelligent System
+		</div>
 	</h1>
-	<div class="w-full text-cyan-300 tracking-widest text-center">
-		Just A Rather Very Intelligent System
-	</div>
 
 	<div
 		class="h-[500px] w-full bg-gray-900/50 border shadow-lg border-cyan-300 shadow-cyan-300 rounded-3xl p-4 overflow-y-auto flex flex-col gap-4"
