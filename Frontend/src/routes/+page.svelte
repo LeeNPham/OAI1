@@ -103,7 +103,7 @@
 		<div class="" bind:this={scrollToDiv} />
 	</div>
 	<form
-		class="flex w-full rounded-3xl gap-4 border bg-gray-900/50 p-4 shadow-lg border-cyan-300 shadow-cyan-300"
+		class="flex w-full rounded-3xl gap-4 bg-gray-900/50 p-4 shadow-lg shadow-cyan-300"
 		on:submit|preventDefault={() => handleSubmit()}
 	>
 		<input
@@ -111,7 +111,10 @@
 			class="w-full rounded-full bg-gray-600 text-cyan-300 focus:ring-0 focus:border-0 border-0"
 			bind:value={query}
 		/>
-		<button type="submit" class="text-cyan-300 border border-cyan-300 px-2 py-1 rounded-xl">
+		<button
+			type="submit"
+			class="text-cyan-300 shadow-md border border-cyan-300/50 hover:bg-gray-600/10 shadow-cyan-300 px-4 py-1 rounded-xl"
+		>
 			Send
 		</button>
 	</form>

@@ -19,9 +19,9 @@
 			{type === 'user' ? 'Me' : 'Jarvis'}
 		</div>
 		<div
-			class="px-5 py-2 {type === 'user'
-				? 'rounded-l-lg rounded-b-lg bg-gray-800/50 text-pink-400'
-				: 'rounded-r-lg rounded-b-lg bg-gray-800/50 text-cyan-300'}"
+			class="px-5 py-2 indent-4 {type === 'user'
+				? 'rounded-l-2xl rounded-b-2xl bg-gray-800/50 text-pink-400'
+				: 'rounded-r-2xl rounded-b-2xl bg-gray-800/50 text-cyan-300'}"
 		>
 			<SvelteMarkdown source={message} />
 		</div>
