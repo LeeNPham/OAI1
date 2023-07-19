@@ -1,20 +1,14 @@
 <script lang="ts">
 	import type { ChatCompletionRequestMessageRoleEnum } from 'openai';
+	import SvelteMarkdown from 'svelte-markdown';
+	import AudioPlayer from './AudioPlayer.svelte';
 	export let type: ChatCompletionRequestMessageRoleEnum;
 	export let message: any | string;
-	import jarvisDefault from '$lib/images/Glowing_Orb.gif';
-	import SvelteMarkdown from 'svelte-markdown';
-	import { onMount } from 'svelte';
-	import AudioPlayer from './AudioPlayer.svelte';
 </script>
 
-<AudioPlayer {message}/>
+
 <div class="flex {type === 'user' ? 'flex-row-reverse' : 'flex-row'} w-full px-10">
-	<img
-		class="h-14 min-w-14 rounded-full object-cover aspect-square mix-blend-exclusion"
-		src={type === 'user' ? 'https://ui-avatars.com/api/?name=Me' : jarvisDefault}
-		alt="{type} avatar"
-	/>
+	<AudioPlayer {type} {message}/>
 
 	<div class="p-2">
 		<div class="text-white text-sm {type === 'user' ? 'text-end' : ''}">
