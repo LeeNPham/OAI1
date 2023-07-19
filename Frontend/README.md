@@ -36,3 +36,8 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+> Future updates
+>
+> > Stock Market Updates: Show real-time stock market data, such as the latest stock prices, indices, or company-specific information. You can retrieve this data from a stock market API to keep users informed about the financial markets.
+> > News Headlines: Display recent news headlines or updates from various news sources. You can fetch this information from a news API to provide users with up-to-date news articles or summaries.
+> > User IP Address: Show the user's IP address. You can obtain this information by making a request to an IP geolocation API, which will provide details about the user's IP address, including their approximate location.
