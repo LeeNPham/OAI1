@@ -34,7 +34,6 @@
 	export let message: any | string;
 	import jarvisDefault from '$lib/images/Glowing_Orb.gif';
 	import SvelteMarkdown from 'svelte-markdown';
-	import { onMount } from 'svelte';
 
 	let isSpeaking = false;
 
