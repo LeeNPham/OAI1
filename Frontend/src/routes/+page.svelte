@@ -7,6 +7,7 @@
 	import TimeAndDateDisplay from '$lib/components/TimeAndDateDisplay.svelte';
 	import JarvisTriangle from '$lib/components/JarvisTriangle.svelte';
 	import Weather from '$lib/components/Weather.svelte';
+	import ComlianceLinks from '$lib/components/ComlianceLinks.svelte';
 
 	let query: string = '';
 	let answer: string = '';
@@ -80,8 +81,9 @@
 			src={jarvisDefault}
 			alt="avatar"
 		/>
-		<JarvisTriangle />
+		<!-- <JarvisTriangle /> -->
 		<TimeAndDateDisplay />
+		<ComlianceLinks />
 		<Weather />
 	</div>
 
