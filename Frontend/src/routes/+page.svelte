@@ -1,10 +1,11 @@
 <script lang="ts">
-
 	import ChatMessage from '$lib/components/ChatMessage.svelte';
 	import jarvisDefault from '$lib/images/jarvisDefault.gif';
 	import type { ChatCompletionRequestMessage } from 'openai';
 	import { SSE } from 'sse.js';
 	import { fade } from 'svelte/transition';
+	import TimeAndDateDisplay from '$lib/components/TimeAndDateDisplay.svelte';
+	import JarvisTriangle from '$lib/components/JarvisTriangle.svelte';
 
 	let query: string = '';
 	let answer: string = '';
@@ -66,8 +67,8 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>PLEASE HIRE ME</title>
+	<meta name="description" content="Go look at me! my github is /leenpham" />
 </svelte:head>
 
 <div class="relative flex flex-col pt-4 w-full px-8 items-center gap-2 z-0">
@@ -78,14 +79,18 @@
 			src={jarvisDefault}
 			alt="avatar"
 		/>
+		<JarvisTriangle />
+		<TimeAndDateDisplay />
 	</div>
 
-		<h1
-			class="text-3xl font-bold w-full text-center text-cyan-300 px-2 py-1 border-cyan-300 border rounded-xl shadow-cyan-300 shadow-md"
-		>
-			J.A.R.V.I.S
-		</h1>
-		<div class='w-full text-cyan-300 tracking-widest text-center'>Just A Rather Very Intelligent System</div>
+	<h1
+		class="text-3xl font-bold w-full text-center text-cyan-300 px-2 py-1 border-cyan-300 border rounded-xl shadow-cyan-300 shadow-md"
+	>
+		J.A.R.V.I.S
+	</h1>
+	<div class="w-full text-cyan-300 tracking-widest text-center">
+		Just A Rather Very Intelligent System
+	</div>
 
 	<div
 		class="h-[500px] w-full bg-gray-900/50 border shadow-lg border-cyan-300 shadow-cyan-300 rounded-3xl p-4 overflow-y-auto flex flex-col gap-4"
