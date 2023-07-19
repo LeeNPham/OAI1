@@ -95,7 +95,7 @@
 	</h1>
 
 	<div
-		class="h-[700px] w-full bg-gray-900/50 border shadow-lg border-cyan-300 shadow-cyan-300 rounded-3xl p-4 overflow-y-auto flex flex-col gap-4"
+		class="h-[650px] w-full bg-gray-900/50 border shadow-lg border-cyan-300 shadow-cyan-300 rounded-3xl p-4 overflow-y-auto flex flex-col gap-4"
 	>
 		<div class="flex flex-col gap-2">
 			<ChatMessage type="assistant" message="Hello, how may I assist you today?" />
