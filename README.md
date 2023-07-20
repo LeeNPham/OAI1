@@ -1,5 +1,3 @@
-![image](https://github.com/LeeNPham/OAI1/assets/107651857/6228cc49-b0ee-4f83-b0f2-de95408db939)# OAI1
-J.A.R.V.I.S. | Compliance-focused Cybersecurity and Environment Integration. Developed an AI assistant based on the GPT-4.0 architecture, with a primary focus on prioritizing compliance for cybersecurity-related inquiries and providing real-time information about the user's current environment
 
 # J.A.R.V.I.S. - Compliance-focused Cybersecurity and Environment Integration
 
