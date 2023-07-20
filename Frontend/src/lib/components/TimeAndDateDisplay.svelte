@@ -22,7 +22,7 @@
 
 <div
 	transition:slide
-	class="text-cyan-300 w-[200px] bg-cyan-300/10 shadow-2xl shadow-cyan-300/20 text-center flex flex-col gap-1 absolute top-10 -left-[500px] p-4 pr-2 border border-x-4 border-y-2 border-cyan-300 rounded-r-3xl rounded-bl-3xl"
+	class="text-cyan-300 w-[200px] bg-cyan-300/10 shadow-2xl shadow-cyan-300/20 text-center flex flex-col gap-1 p-4 pr-2 border border-x-4 border-y-2 border-cyan-300 rounded-r-3xl rounded-bl-3xl"
 >
 	<div
 		class="font-bold border-l-2 border-b-4 border border-cyan-200 px-2 bg-black/90 rounded-tr-2xl"

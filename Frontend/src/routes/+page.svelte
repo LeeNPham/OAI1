@@ -72,59 +72,67 @@
 	<meta name="description" content="Go look at me! my github is /leenpham" />
 </svelte:head>
 
-<div class="relative flex flex-col pt-4 w-full px-8 items-center z-0">
-	<div class="absolute top-28 bg-cyan-300 rounded-full shadow-cyan-300 shadow-lg -z-10">
-		<img
-			transition:fade
-			class="w-[400px] h-auto rounded-full object-cover aspect-square mix-blend-multiply"
-			src={jarvisDefault}
-			alt="avatar"
-		/>
-		<JarvisTriangle />
-		<TimeAndDateDisplay />
-		<Weather />
-	</div>
-
-	<h1
-		class="text-3xl font-bold w-full text-center text-cyan-300 px-2 py-1 border-cyan-200 border rounded-t-3xl shadow-cyan-300 shadow-xl"
-	>
-		J.A.R.V.I.S
-		<div class="w-full text-cyan-300 tracking-widest text-center text-md font-mono">
-			Just A Rather Very Intelligent System
-		</div>
-	</h1>
-
-	<div
-		class="h-[650px] w-full bg-gray-900/50 border shadow-lg border-cyan-200 shadow-cyan-300 p-4 overflow-y-auto flex flex-col gap-4"
-	>
+<div class="relative flex flex-col w-full px-8 items-center z-0">
+	<div class="relative flex flex-row w-full justify-between items-center py-32">
 		<div class="flex flex-col gap-2">
-			<ChatMessage type="assistant" message="Hello, how may I assist you today?" />
-			{#each chatMessages as message}
-				<ChatMessage type={message.role} message={message.content} />
-			{/each}
-			{#if answer}
-				<ChatMessage type="assistant" message={answer} />
-			{/if}
-			{#if loading}
-				<ChatMessage type="assistant" message="Loading.." />
-			{/if}
+			<TimeAndDateDisplay />
+			<Weather />
 		</div>
-		<div class="" bind:this={scrollToDiv} />
+
+		<div class="flex flex-row top-28 bg-cyan-300 rounded-full shadow-cyan-300 shadow-lg -z-10">
+			<img
+				transition:fade
+				class="w-[400px] h-auto rounded-full object-cover aspect-square mix-blend-multiply"
+				src={jarvisDefault}
+				alt="avatar"
+			/>
+		</div>
+		<JarvisTriangle />
 	</div>
-	<form
-		class="flex w-full rounded-b-3xl gap-4 bg-gray-900/50 p-4 shadow-lg shadow-cyan-300 border-cyan-200 border-t-0 border"
-		on:submit|preventDefault={() => handleSubmit()}
+	<div
+		class="absolute bg-black sm:bg-black/80 lg:bg-transparent h-full flex flex-col max-w-[739px]"
 	>
-		<input
-			type="text"
-			class="w-full rounded-full bg-gray-600 text-cyan-300 focus:ring-0 focus:border-0 border-0"
-			bind:value={query}
-		/>
-		<button
-			type="submit"
-			class="text-cyan-300 shadow-md border border-cyan-300/50 hover:bg-gray-600/10 shadow-cyan-300 px-4 py-1 rounded-xl"
+		<h1
+			class="text-3xl font-bold w-full text-center text-cyan-300 px-2 py-1 border-cyan-200 border rounded-t-3xl shadow-cyan-300 shadow-xl"
 		>
-			Send
-		</button>
-	</form>
+			J.A.R.V.I.S
+			<div class="w-full text-cyan-300 tracking-widest text-center text-md font-mono">
+				Just A Rather Very Intelligent System
+			</div>
+		</h1>
+
+		<div
+			class="flex-auto w-full bg-gray-900/50 border shadow-lg border-cyan-200 shadow-cyan-300 p-4 overflow-y-auto flex flex-col gap-4"
+		>
+			<div class="flex flex-col gap-2">
+				<ChatMessage type="assistant" message="Hello, how may I assist you today?" />
+				{#each chatMessages as message}
+					<ChatMessage type={message.role} message={message.content} />
+				{/each}
+				{#if answer}
+					<ChatMessage type="assistant" message={answer} />
+				{/if}
+				{#if loading}
+					<ChatMessage type="assistant" message="Loading.." />
+				{/if}
+			</div>
+			<div class="" bind:this={scrollToDiv} />
+		</div>
+		<form
+			class="flex w-full rounded-b-3xl gap-4 bg-gray-900/50 p-4 shadow-lg shadow-cyan-300 border-cyan-200 border-t-0 border"
+			on:submit|preventDefault={() => handleSubmit()}
+		>
+			<input
+				type="text"
+				class="w-full rounded-full bg-gray-600 text-cyan-300 focus:ring-0 focus:border-0 border-0"
+				bind:value={query}
+			/>
+			<button
+				type="submit"
+				class="text-cyan-300 shadow-md border border-cyan-300/50 hover:bg-gray-600/10 shadow-cyan-300 px-4 py-1 rounded-xl"
+			>
+				Send
+			</button>
+		</form>
+	</div>
 </div>

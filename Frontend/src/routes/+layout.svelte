@@ -14,6 +14,7 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+		overflow-x: hidden; /* Prevent horizontal overflow */
 	}
 
 	main {
@@ -22,8 +23,7 @@
 		flex-direction: column;
 		padding: 1rem;
 		width: 100%;
-		max-width: 1000px;
-		min-width: 887px;
+		max-width: 1275px;
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
