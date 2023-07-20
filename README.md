@@ -1,7 +1,7 @@
 
 # J.A.R.V.I.S. - Compliance-focused Cybersecurity and Environment Integration
 
-![J.A.R.V.I.S. Logo]([https://wallpapers.com/images/hd/jarvis-4k-no-words-2wff7e5lqi91i9xf.jpg])
+![image](https://github.com/LeeNPham/OAI1/assets/107651857/6228cc49-b0ee-4f83-b0f2-de95408db939)
 
 J.A.R.V.I.S. is an AI assistant based on the powerful GPT-4.0 architecture, designed to prioritize compliance for cybersecurity-related inquiries while also providing real-time information about the user's current environment. This project aims to offer a comprehensive solution for users to interact seamlessly with the AI assistant, benefiting from both text-based interactions and voice-based responses through an integrated voice streaming API.
 
