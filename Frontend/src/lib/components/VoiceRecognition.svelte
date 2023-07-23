@@ -3,7 +3,7 @@
 
 	let isRecording = false;
 	let transcript = '';
-
+	// @ts-ignore
 	let recognition: SpeechRecognition | null = null;
 
 	const startRecording = () => {
