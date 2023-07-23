@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 load_dotenv()
 api_key = os.environ.get("CLUSTER_PASSWORD")
 client = motor.motor_asyncio.AsyncIOMotorClient(api_key)
-database = client.UserList
-collection = database.user
+database = client.OAIUserList
+collection = database.oaiuser
 
 
 # User DB Calls Start
