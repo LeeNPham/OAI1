@@ -31,11 +31,8 @@
 			},
 			payload: JSON.stringify({ messages: chatMessages })
 		});
-
 		query = '';
-
 		eventSource.addEventListener('error', handleError);
-
 		eventSource.addEventListener('message', (e) => {
 			scrollToBottom();
 			try {
@@ -45,10 +42,8 @@
 					answer = '';
 					return;
 				}
-
 				const completionResponse = JSON.parse(e.data);
 				const [{ delta }] = completionResponse.choices;
-
 				if (delta.content) {
 					answer = (answer ?? '') + delta.content;
 				}
