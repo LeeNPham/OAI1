@@ -138,4 +138,4 @@
 	</div>
 </div>
 
-<VoiceRecognition />
+<VoiceRecognition bind:transcript={query} />

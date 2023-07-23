@@ -1,8 +1,8 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { browser } from '$app/environment';
 
 	let isRecording = false;
-	let transcript = '';
+	export let transcript = '';
 	// @ts-ignore
 	let recognition: SpeechRecognition | null = null;
 
@@ -47,4 +47,67 @@
 		{isRecording ? 'Recording...' : 'Hold to Record'}
 	</button>
 	<textarea class="text-black" bind:value={transcript} disabled />
+</div> -->
+<script lang="ts">
+	import { browser } from '$app/environment';
+
+	let isRecording = false;
+	export let transcript = '';
+	// @ts-ignore
+	let recognition: SpeechRecognition | null = null;
+
+	$: {
+		if (transcript) {
+			console.log(transcript);
+		}
+	}
+
+	const startRecording = () => {
+		if (browser && !isRecording) {
+			isRecording = true;
+			transcript = '';
+
+			recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+			recognition.lang = 'en-US';
+			recognition.continuous = true;
+			recognition.interimResults = true;
+
+			recognition.onresult = (event) => {
+				const result = event.results[event.results.length - 1];
+				transcript = result[0].transcript;
+			};
+
+			recognition.start();
+		}
+	};
+
+	const stopRecording = () => {
+		if (browser && recognition && isRecording) {
+			isRecording = false;
+			recognition.stop();
+		}
+	};
+
+	const clearTranscript = () => {
+		transcript = '';
+	};
+</script>
+
+<div class="flex flex-col items-center justify-center">
+	<div class="text-white">Voice Recognition only works with Google Chrome</div>
+</div>
+<div>
+	<button
+		class="text-white bg-gray-500 px-2 py-1"
+		on:touchstart={startRecording}
+		on:touchend={stopRecording}
+		on:mousedown={startRecording}
+		on:mouseup={stopRecording}
+	>
+		{isRecording ? 'Recording...' : 'Hold to Record'}
+	</button>
+	<button class="text-white bg-red-500 px-2 py-1" on:click={clearTranscript}>
+		Clear Transcript
+	</button>
+	<!-- <textarea class="text-black" bind:value={transcript} disabled /> -->
 </div>
