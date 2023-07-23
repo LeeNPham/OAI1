@@ -6,11 +6,11 @@
 	// @ts-ignore
 	let recognition: SpeechRecognition | null = null;
 
-	$: {
-		if (transcript) {
-			console.log(transcript);
-		}
-	}
+	// $: {
+	// 	if (transcript) {
+	// 		console.log(transcript);
+	// 	}
+	// }
 
 	const startRecording = () => {
 		if (browser && !isRecording) {
