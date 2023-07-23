@@ -7,6 +7,7 @@
 	import TimeAndDateDisplay from '$lib/components/TimeAndDateDisplay.svelte';
 	import JarvisTriangle from '$lib/components/JarvisTriangle.svelte';
 	import Weather from '$lib/components/Weather.svelte';
+	import VoiceRecognition from '$lib/components/VoiceRecognition.svelte';
 
 	let query: string = '';
 	let answer: string = '';
@@ -68,7 +69,7 @@
 </script>
 
 <svelte:head>
-	<title>PLEASE HIRE ME</title>
+	<title>J.A.R.V.I.S</title>
 	<meta name="description" content="Go look at me! my github is /leenpham" />
 </svelte:head>
 
@@ -136,3 +137,5 @@
 		</form>
 	</div>
 </div>
+
+<VoiceRecognition />
