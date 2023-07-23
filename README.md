@@ -7,16 +7,18 @@ J.A.R.V.I.S. is an AI assistant based on the powerful GPT-4.0 architecture, desi
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Data Sources](#data-sources)
-- [Model Updates](#model-updates)
-- [Testing](#testing)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
-- [License](#license)
+- [J.A.R.V.I.S. - Compliance-focused Cybersecurity and Environment Integration](#jarvis---compliance-focused-cybersecurity-and-environment-integration)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Features](#features)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Data Sources](#data-sources)
+  - [Model Updates](#model-updates)
+  - [Testing](#testing)
+  - [Deployment](#deployment)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Introduction
 
@@ -27,6 +29,7 @@ The J.A.R.V.I.S. project is aimed at developing an advanced AI assistant capable
 - Compliance-focused AI assistant
 - Real-time environment information
 - Voice streaming for audio interactions
+- Voice recognition for disability related recording interactions
 - Integration with weather, news, and emergency APIs
 - Continuous updates to maintain cybersecurity compliance
 - Multi-platform support
