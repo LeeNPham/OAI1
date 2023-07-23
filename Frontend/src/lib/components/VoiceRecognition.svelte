@@ -16,13 +16,13 @@
 		if (browser && !isRecording) {
 			isRecording = true;
 			transcript = '';
-
+			// @ts-ignore
 			recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 			recognition.lang = 'en-US';
 			recognition.continuous = true;
 			recognition.interimResults = true;
 
-			recognition.onresult = (event) => {
+			recognition.onresult = (event: any) => {
 				const result = event.results[event.results.length - 1];
 				transcript = result[0].transcript;
 			};
