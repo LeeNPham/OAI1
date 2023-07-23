@@ -120,22 +120,23 @@
 			<div class="" bind:this={scrollToDiv} />
 		</div>
 		<form
-			class="flex w-full rounded-b-3xl gap-4 bg-gray-900/50 p-4 shadow-lg shadow-cyan-300 border-cyan-200 border-t-0 border"
+			class="flex flex-col w-full rounded-b-3xl gap-4 bg-gray-900/50 p-4 shadow-lg shadow-cyan-300 border-cyan-200 border-t-0 border"
 			on:submit|preventDefault={() => handleSubmit()}
 		>
-			<input
-				type="text"
-				class="w-full rounded-full bg-gray-600 text-cyan-300 focus:ring-0 focus:border-0 border-0"
-				bind:value={query}
-			/>
-			<button
-				type="submit"
-				class="text-cyan-300 shadow-md border border-cyan-300/50 hover:bg-gray-600/10 shadow-cyan-300 px-4 py-1 rounded-xl"
-			>
-				Send
-			</button>
+			<div class="flex flex-row w-full">
+				<input
+					type="text"
+					class="w-full rounded-full bg-gray-600 text-cyan-300 focus:ring-0 focus:border-0 border-0"
+					bind:value={query}
+				/>
+				<button
+					type="submit"
+					class="text-cyan-300 shadow-md border border-cyan-300/50 hover:bg-gray-600/10 shadow-cyan-300 px-4 py-1 rounded-xl"
+				>
+					Send
+				</button>
+			</div>
+			<VoiceRecognition bind:transcript={query} />
 		</form>
 	</div>
 </div>
-
-<VoiceRecognition bind:transcript={query} />

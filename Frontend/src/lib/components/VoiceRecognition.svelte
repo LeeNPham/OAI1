@@ -93,21 +93,24 @@
 	};
 </script>
 
-<div class="flex flex-col items-center justify-center">
-	<div class="text-white">Voice Recognition only works with Google Chrome</div>
-</div>
-<div>
-	<button
-		class="text-white bg-gray-500 px-2 py-1"
-		on:touchstart={startRecording}
-		on:touchend={stopRecording}
-		on:mousedown={startRecording}
-		on:mouseup={stopRecording}
-	>
-		{isRecording ? 'Recording...' : 'Hold to Record'}
-	</button>
-	<button class="text-white bg-red-500 px-2 py-1" on:click={clearTranscript}>
-		Clear Transcript
-	</button>
-	<!-- <textarea class="text-black" bind:value={transcript} disabled /> -->
+<div class="flex flex-col items-end justify-end w-full">
+	<!-- <div class="text-white">Voice Recognition only works with Google Chrome</div> -->
+	<div>
+		<button
+			class="text-cyan-300 border border-cyan-300 px-2 py-1 w-[140px] rounded-md hover:bg-cyan-300/20 font-bold shadow-md shadow-cyan-300"
+			on:touchstart={startRecording}
+			on:touchend={stopRecording}
+			on:mousedown={startRecording}
+			on:mouseup={stopRecording}
+		>
+			{isRecording ? 'Recording...' : 'Hold to Record'}
+		</button>
+		<button
+			class="text-red-300 border border-cyan-300 px-2 py-1 w-[140px] rounded-md hover:bg-cyan-300/20 font-bold shadow-md shadow-cyan-300"
+			on:click={clearTranscript}
+		>
+			Clear Transcript
+		</button>
+		<!-- <textarea class="text-black" bind:value={transcript} disabled /> -->
+	</div>
 </div>
