@@ -1,53 +1,3 @@
-<!-- <script lang="ts">
-	import { browser } from '$app/environment';
-
-	let isRecording = false;
-	export let transcript = '';
-	// @ts-ignore
-	let recognition: SpeechRecognition | null = null;
-
-	const startRecording = () => {
-		if (browser && !isRecording) {
-			isRecording = true;
-			transcript = '';
-
-			recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-			recognition.lang = 'en-US';
-			recognition.continuous = true;
-			recognition.interimResults = true;
-
-			recognition.onresult = (event) => {
-				const result = event.results[event.results.length - 1];
-				transcript = result[0].transcript;
-			};
-
-			recognition.start();
-		}
-	};
-
-	const stopRecording = () => {
-		if (browser && recognition && isRecording) {
-			isRecording = false;
-			recognition.stop();
-		}
-	};
-</script>
-
-<div class="flex flex-col items-center justify-center">
-	<div class="text-white">Voice Recognition only works with Google Chrome</div>
-</div>
-<div>
-	<button
-		class="text-white bg-gray-500 px-2 py-1"
-		on:touchstart={startRecording}
-		on:touchend={stopRecording}
-		on:mousedown={startRecording}
-		on:mouseup={stopRecording}
-	>
-		{isRecording ? 'Recording...' : 'Hold to Record'}
-	</button>
-	<textarea class="text-black" bind:value={transcript} disabled />
-</div> -->
 <script lang="ts">
 	import { browser } from '$app/environment';
 
@@ -95,6 +45,7 @@
 
 <div class="flex flex-col items-end justify-end w-full">
 	<!-- <div class="text-white">Voice Recognition only works with Google Chrome</div> -->
+	<!-- Consider giving this value a wake word so that recording is only occuring for transcribed messages when event is created -->
 	<div>
 		<button
 			class="text-cyan-300 border border-cyan-300 px-2 py-1 w-[140px] rounded-md hover:bg-cyan-300/20 font-bold shadow-md shadow-cyan-300"
@@ -111,6 +62,6 @@
 		>
 			Clear Transcript
 		</button>
-		<!-- <textarea class="text-black" bind:value={transcript} disabled /> -->
+		<!-- This is used to verify the data as being entered <textarea class="text-black" bind:value={transcript} disabled /> -->
 	</div>
 </div>
