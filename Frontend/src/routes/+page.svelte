@@ -14,6 +14,8 @@
 	let loading: boolean = false;
 	let chatMessages: ChatCompletionRequestMessage[] = [];
 	let scrollToDiv: HTMLDivElement;
+	let weatherData: any = null; // Modify the type accordingly
+	let userLocation: any = null; // Modify the type accordingly
 
 	function scrollToBottom() {
 		setTimeout(function () {
@@ -31,17 +33,27 @@
 			},
 			payload: JSON.stringify({ messages: chatMessages })
 		});
+
 		query = '';
 		eventSource.addEventListener('error', handleError);
-		eventSource.addEventListener('message', (e) => {
+		eventSource.addEventListener('message', async (e) => {
 			scrollToBottom();
 			try {
 				loading = false;
 				if (e.data === '[DONE]') {
 					chatMessages = [...chatMessages, { role: 'assistant', content: answer }];
+
+					if (weatherData && userLocation) {
+						const weatherMessage = `These are all user details, Location: ${JSON.stringify(
+							userLocation
+						)}, Weather: ${JSON.stringify(weatherData)}`;
+						chatMessages = [...chatMessages, { role: 'system', content: weatherMessage }];
+					}
+
 					answer = '';
 					return;
 				}
+
 				const completionResponse = JSON.parse(e.data);
 				const [{ delta }] = completionResponse.choices;
 				if (delta.content) {
@@ -51,6 +63,7 @@
 				handleError(err);
 			}
 		});
+
 		eventSource.stream();
 		scrollToBottom();
 	};
@@ -61,6 +74,15 @@
 		answer = '';
 		console.error(err);
 	}
+
+	// Listen for emitted events from Weather component
+	const handleWeatherData = (event) => {
+		weatherData = event.detail;
+	};
+
+	const handleUserLocation = (event) => {
+		userLocation = event.detail;
+	};
 </script>
 
 <svelte:head>
@@ -72,9 +94,8 @@
 	<div class="relative flex flex-row w-full justify-between items-center py-32">
 		<div class="flex flex-col gap-2">
 			<TimeAndDateDisplay />
-			<Weather />
+			<Weather on:weatherData={handleWeatherData} on:userLocation={handleUserLocation} />
 		</div>
-
 		<div class="flex flex-row top-28 bg-cyan-300 rounded-full shadow-cyan-300 shadow-lg -z-10">
 			<img
 				transition:fade
@@ -96,18 +117,16 @@
 				Just A Rather Very Intelligent System
 			</div>
 		</h1>
-
 		<div
 			class="flex-auto w-full bg-gray-900/50 border shadow-lg border-cyan-200 shadow-cyan-300 p-4 overflow-y-auto flex flex-col gap-4"
 		>
 			<div class="flex flex-col gap-2">
 				<ChatMessage type="assistant" message="Hello, how may I assist you today?" />
 				{#each chatMessages as message}
-					<ChatMessage type={message.role} message={message.content} />
+					{#if !message.content?.startsWith('These are all user details,')}
+						<ChatMessage type={message.role} message={message.content} />
+					{/if}
 				{/each}
-				{#if answer}
-					<ChatMessage type="assistant" message={answer} />
-				{/if}
 				{#if loading}
 					<ChatMessage type="assistant" message="Loading.." />
 				{/if}

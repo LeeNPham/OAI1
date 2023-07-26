@@ -3,6 +3,8 @@
 	import { PUBLIC_WEATHER_API } from '$env/static/public';
 	let weatherData = null;
 	let userLocation = '';
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
 
 	onMount(async () => {
 		// Retrieve user's location using Geolocation API
@@ -19,6 +21,8 @@
 			// Set weather data and user location
 			weatherData = data.current;
 			userLocation = data.location;
+			dispatch('weatherData', weatherData);
+			dispatch('userLocation', userLocation);
 		});
 	});
 </script>
