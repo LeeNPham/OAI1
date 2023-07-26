@@ -18,7 +18,7 @@
 
 			// Set weather data and user location
 			weatherData = data.current;
-			userLocation = data.location.name;
+			userLocation = data.location;
 		});
 	});
 </script>
@@ -31,7 +31,7 @@
 			class="font-bold border-l-2 border-b-4 border border-cyan-200 px-2 bg-black/90 rounded-tr-2xl"
 		>
 			<div class="underline">Location:</div>
-			<div>{userLocation}</div>
+			<div>{userLocation.name}</div>
 		</div>
 		<div class="font-bold border-l-2 border-b-4 border border-cyan-200 px-2 bg-black/90">
 			<div class="underline">Temperature:</div>
