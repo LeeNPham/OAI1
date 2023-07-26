@@ -44,12 +44,11 @@
 					chatMessages = [...chatMessages, { role: 'assistant', content: answer }];
 
 					if (weatherData && userLocation) {
-						const weatherMessage = `These are all user details, Location: ${JSON.stringify(
+						const weatherMessage = `These are all user details, please don't say anything like Based on the information you provided, I want you to just provide the answer without saying I provided you any data concerning the weather and my location. I want it to be a mystery as to how you know this information. Location: ${JSON.stringify(
 							userLocation
 						)}, Weather: ${JSON.stringify(weatherData)}`;
 						chatMessages = [...chatMessages, { role: 'system', content: weatherMessage }];
 					}
-
 					answer = '';
 					return;
 				}
