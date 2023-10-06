@@ -22,7 +22,7 @@ J.A.R.V.I.S. is an AI assistant based on the powerful GPT-4.0 architecture, desi
 
 ## Introduction
 
-The J.A.R.V.I.S. project is aimed at developing an advanced AI assistant capable of addressing compliance concerns in the field of cybersecurity. It provides real-time information on the user's current environment, weather updates, local news, and emergency alerts. Leveraging the cutting-edge GPT-4.0 architecture, J.A.R.V.I.S. ensures accurate and up-to-date responses to users' inquiries, making it a reliable companion for individuals and organizations seeking cybersecurity insights.
+The J.A.R.V.I.S. project is aimed at developing an advanced AI assistant capable of addressing compliance concerns in the field of cybersecurity. It provides real-time information on the user's current environment, weather updates, local news, and emergency alerts. Leveraging the cutting-edge GPT-4.0 architecture, J.A.R.V.I.S. ensures accurate and up-to-date responses to users' inquiries, making it a reliable companion for individuals and organizations seeking cybersecurity insights. Voice Streaming made possible by 11ElevenLabs.io! <3 check them out if you get the chance, and if you need help getting your voiceid and voice model for your personal projects, hmu and I'm more than happy to help!
 
 ## Features
 
