@@ -6,11 +6,12 @@
 	// @ts-ignore
 	let recognition: SpeechRecognition | null = null;
 
-	// $: {
-	// 	if (transcript) {
-	// 		console.log(transcript);
-	// 	}
-	// }
+	//start looking into wake word options for fun
+	$: {
+		if (transcript) {
+			console.log(transcript);
+		}
+	}
 
 	const startRecording = () => {
 		if (browser && !isRecording) {
