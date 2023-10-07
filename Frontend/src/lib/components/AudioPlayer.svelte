@@ -2,6 +2,7 @@
 	import { PUBLIC_ELEVEN_LABS, PUBLIC_VOICE_ID } from '$env/static/public';
 	import jarvisDefault from '$lib/images/Glowing_Orb.gif';
 	import axios from 'axios';
+	import { onMount } from 'svelte';
 	export let message: string;
 	export let type: string;
 
@@ -38,6 +39,12 @@
 			console.error('Error converting text to speech:', error);
 		}
 	}
+
+	onMount(() => {
+		if (type === 'assistant' && message !== 'Loading..') {
+			convertTextToSpeech();
+		}
+	});
 </script>
 
 <button class="min-w-[60px]" on:click={convertTextToSpeech}
