@@ -7,7 +7,7 @@
 	const dispatch = createEventDispatcher();
 
 	let isRecording = false;
-	export let transcript = '';
+	let transcript = '';
 
 	let recognition: SpeechRecognition | null = null;
 	let wakeWord = 'jarvis'; // Change this to your desired wake word
@@ -42,6 +42,10 @@
 					// If there's silence for 1.5 seconds, stop recognition
 					recognition?.stop();
 					isRecording = false;
+					if (transcript != '') {
+						dispatch('transcript', transcript);
+					}
+
 					startRecording(); // Restart recognition
 				}, 1500); // Adjust the duration for the pause before restarting
 			};
