@@ -23,7 +23,7 @@
 		}, 100);
 	}
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e: { detail: any }) => {
 		// console.log(e.detail);
 		let transcript = e.detail;
 		query = transcript;
@@ -78,11 +78,11 @@
 	}
 
 	// Listen for emitted events from Weather component
-	const handleWeatherData = (event) => {
+	const handleWeatherData = (event: { detail: any }) => {
 		weatherData = event.detail;
 	};
 
-	const handleUserLocation = (event) => {
+	const handleUserLocation = (event: { detail: any }) => {
 		userLocation = event.detail;
 	};
 </script>
