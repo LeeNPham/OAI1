@@ -23,10 +23,16 @@
 		}, 100);
 	}
 
-	const handleSubmit = async (e: { detail: any }) => {
+	const handleSubmit = async (e?: { detail: any }) => {
 		// console.log(e.detail);
-		let transcript = e.detail;
-		query = transcript;
+
+		let transcript;
+
+		if (e) {
+			transcript = e.detail;
+			query = transcript;
+		}
+
 		loading = true;
 		chatMessages = [...chatMessages, { role: 'user', content: query }];
 
@@ -135,24 +141,25 @@
 			</div>
 			<div class="" bind:this={scrollToDiv} />
 		</div>
-		<!-- <form
+		<form
 			class="flex flex-col w-full rounded-b-3xl gap-4 bg-gray-900/50 p-4 shadow-lg shadow-cyan-300 border-cyan-200 border-t-0 border"
 			on:submit|preventDefault={() => handleSubmit()}
-		> -->
-		<!-- <div class="flex flex-row gap-5 w-full">
-			<input
-				type="text"
-				class="w-full rounded-full bg-gray-600 text-cyan-300 focus:ring-0 focus:border-0 border-0"
-				bind:value={query}
-			/>
-			<button
-				type="submit"
-				class="text-cyan-300 shadow-md border border-cyan-300/50 hover:bg-gray-600/10 shadow-cyan-300 px-4 py-1 rounded-xl"
-			>
-				Send
-			</button>
-		</div> -->
+		>
+			<div class="flex flex-row gap-5 w-full">
+				<input
+					type="text"
+					class="w-full rounded-full bg-gray-600 text-cyan-300 focus:ring-0 focus:border-0 border-0"
+					bind:value={query}
+				/>
+				<button
+					type="submit"
+					class="text-cyan-300 shadow-md border border-cyan-300/50 hover:bg-gray-600/10 shadow-cyan-300 px-4 py-1 rounded-xl"
+				>
+					Send
+				</button>
+			</div>
+		</form>
+
 		<VoiceRecognition on:transcript={handleSubmit} />
-		<!-- </form> -->
 	</div>
 </div>
