@@ -8,6 +8,7 @@
 
 	let isRecording = false;
 	let transcript = '';
+	// let prompt = '';
 
 	let recognition: SpeechRecognition | null = null;
 	let wakeWord = 'jarvis'; // Change this to your desired wake word
@@ -43,11 +44,12 @@
 					recognition?.stop();
 					isRecording = false;
 					if (transcript != '') {
+						// prompt = transcript;
 						dispatch('transcript', transcript);
 					}
 
 					startRecording(); // Restart recognition
-				}, 1500); // Adjust the duration for the pause before restarting
+				}, 2000); // Adjust the duration for the pause before restarting
 			};
 
 			recognition.onend = () => {
@@ -60,6 +62,10 @@
 			recognition.start();
 		}
 	};
+
+	// $: {
+	// 	console.log(prompt);
+	// }
 
 	onMount(() => {
 		// Start recording when the component is mounted
