@@ -30,7 +30,9 @@
 				if (spokenText.includes(wakeWord)) {
 					transcriptDispatched = false;
 					clearTimeout(silenceTimeout);
-					transcript = spokenText.substring(spokenText.indexOf(wakeWord) + wakeWord.length).trim();
+					transcript = spokenText
+						.substring(spokenText.indexOf(wakeWord) - 6 + wakeWord.length)
+						.trim();
 				}
 
 				// Dispatch the transcript if it hasn't been dispatched yet
