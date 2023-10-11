@@ -24,7 +24,7 @@
 	}
 
 	const handleSubmit = async (e?: { detail: any }) => {
-		// console.log(e.detail);
+		console.log(e?.detail);
 
 		let transcript;
 

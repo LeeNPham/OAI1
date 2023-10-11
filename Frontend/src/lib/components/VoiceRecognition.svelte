@@ -2,26 +2,22 @@
 	//@ts-nocheck
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
-	import { writable } from 'svelte/store';
 	import { createEventDispatcher } from 'svelte';
+
 	const dispatch = createEventDispatcher();
 
 	let isRecording = false;
 	let transcript = '';
-	// let prompt = '';
-
+	let transcriptDispatched = false;
 	let recognition: SpeechRecognition | null = null;
-	let wakeWord = 'jarvis'; // Change this to your desired wake word
+	let wakeWord = 'jarvis';
 	let silenceTimeout: NodeJS.Timeout | null = null;
-
-	// Create a writable store for transcript updates
-	let transcriptStore = writable('');
 
 	// Function to start recording
 	const startRecording = () => {
 		if (browser && !isRecording) {
 			isRecording = true;
-			transcript = '';
+			transcriptDispatched = false;
 			recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 			recognition.lang = 'en-US';
 			recognition.continuous = true;
@@ -31,31 +27,32 @@
 				const result = event.results[event.results.length - 1];
 				const spokenText = result[0].transcript.toLowerCase();
 
-				if (spokenText.includes(wakeWord)) {
+				// When the wake word is detected, start capturing the transcript
+				if (spokenText.includes(wakeWord) && !transcriptDispatched) {
 					clearTimeout(silenceTimeout);
-					transcript = spokenText.substring(spokenText.indexOf(wakeWord));
-					transcriptStore.set(transcript); // Pass the transcript to the store
-				}
+					transcript = spokenText.substring(spokenText.indexOf(wakeWord) + wakeWord.length).trim();
 
-				// Reset the silence timeout for each recognized speech
-				clearTimeout(silenceTimeout);
-				silenceTimeout = setTimeout(() => {
-					// If there's silence for 1.5 seconds, stop recognition
-					recognition?.stop();
-					isRecording = false;
-					if (transcript != '') {
-						// prompt = transcript;
+					// If the result is finalized by the speech recognition, dispatch it
+					if (result.isFinal) {
 						dispatch('transcript', transcript);
+						transcriptDispatched = true;
+						transcript = '';
+					} else {
+						// If not, wait for silence and then dispatch
+						silenceTimeout = setTimeout(() => {
+							if (transcript && !transcriptDispatched) {
+								dispatch('transcript', transcript);
+								transcriptDispatched = true;
+							}
+							transcript = ''; // Reset the transcript
+						}, 2000);
 					}
-
-					startRecording(); // Restart recognition
-				}, 2000); // Adjust the duration for the pause before restarting
+				}
 			};
 
 			recognition.onend = () => {
-				// Restart recognition when it ends
 				if (isRecording) {
-					startRecording();
+					recognition?.start();
 				}
 			};
 
@@ -63,12 +60,13 @@
 		}
 	};
 
-	// $: {
-	// 	console.log(prompt);
-	// }
-
 	onMount(() => {
-		// Start recording when the component is mounted
 		startRecording();
+	});
+
+	onDestroy(() => {
+		recognition?.stop();
+		isRecording = false;
+		clearTimeout(silenceTimeout);
 	});
 </script>
