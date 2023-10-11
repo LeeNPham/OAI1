@@ -17,7 +17,6 @@
 	const startRecording = () => {
 		if (browser && !isRecording) {
 			isRecording = true;
-			transcriptDispatched = false;
 			recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 			recognition.lang = 'en-US';
 			recognition.continuous = true;
@@ -27,24 +26,26 @@
 				const result = event.results[event.results.length - 1];
 				const spokenText = result[0].transcript.toLowerCase();
 
-				// When the wake word is detected, start capturing the transcript
-				if (spokenText.includes(wakeWord) && !transcriptDispatched) {
+				// Reset the flag whenever the wake word is detected again
+				if (spokenText.includes(wakeWord)) {
+					transcriptDispatched = false;
 					clearTimeout(silenceTimeout);
 					transcript = spokenText.substring(spokenText.indexOf(wakeWord) + wakeWord.length).trim();
+				}
 
-					// If the result is finalized by the speech recognition, dispatch it
+				// Dispatch the transcript if it hasn't been dispatched yet
+				if (!transcriptDispatched) {
 					if (result.isFinal) {
 						dispatch('transcript', transcript);
 						transcriptDispatched = true;
 						transcript = '';
 					} else {
-						// If not, wait for silence and then dispatch
 						silenceTimeout = setTimeout(() => {
 							if (transcript && !transcriptDispatched) {
 								dispatch('transcript', transcript);
 								transcriptDispatched = true;
+								transcript = ''; // Reset the transcript
 							}
-							transcript = ''; // Reset the transcript
 						}, 2000);
 					}
 				}
