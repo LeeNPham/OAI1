@@ -38,13 +38,15 @@
 				// Dispatch the transcript if it hasn't been dispatched yet
 				if (!transcriptDispatched) {
 					if (result.isFinal) {
+						console.log('this is the one that has the whole message');
 						dispatch('transcript', transcript);
 						transcriptDispatched = true;
 						transcript = '';
 					} else {
 						silenceTimeout = setTimeout(() => {
 							if (transcript && !transcriptDispatched) {
-								dispatch('transcript', transcript);
+								console.log('this is the one is thats waiting for the two seconds to happen');
+								// dispatch('transcript', transcript);
 								transcriptDispatched = true;
 								transcript = ''; // Reset the transcript
 							}
