@@ -11,12 +11,12 @@
 
 	<div class="p-2">
 		<div class="text-white text-sm {type === 'user' ? 'text-end' : ''}">
-			{type === 'user' ? 'Me' : 'Jarvis'}
+			{type === 'user' ? 'Me' : 'PokePal'}
 		</div>
 		<div
 			class="px-5 py-2 indent-4 {type === 'user'
 				? 'rounded-l-2xl rounded-b-2xl bg-gray-800/70 text-pink-400'
-				: 'rounded-r-2xl rounded-b-2xl bg-gray-800/70 text-cyan-300'}"
+				: 'rounded-r-2xl rounded-b-2xl bg-gray-800/70 text-red-300'}"
 		>
 			<SvelteMarkdown source={message} />
 		</div>

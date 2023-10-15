@@ -104,7 +104,7 @@
 			<TimeAndDateDisplay />
 			<Weather on:weatherData={handleWeatherData} on:userLocation={handleUserLocation} />
 		</div>
-		<div class="flex flex-row top-28 bg-cyan-300 rounded-full shadow-cyan-300 shadow-lg -z-10">
+		<div class="flex flex-row top-28 bg-red-300 rounded-full shadow-red-300 shadow-lg -z-10">
 			<img
 				transition:fade
 				class="w-[400px] h-auto rounded-full object-cover aspect-square mix-blend-multiply"
@@ -118,15 +118,15 @@
 		class="absolute bg-black sm:bg-black/80 lg:bg-transparent h-full flex flex-col max-w-[739px]"
 	>
 		<h1
-			class="text-3xl font-bold w-full text-center text-cyan-300 px-2 py-1 border-cyan-200 border rounded-t-3xl shadow-cyan-300 shadow-xl"
+			class="text-3xl font-bold w-full text-center text-red-300 px-2 py-1 border-red-200 border rounded-t-3xl shadow-red-300 shadow-xl"
 		>
-			J.A.R.V.I.S
-			<div class="w-full text-cyan-300 tracking-widest text-center text-md font-mono">
-				Just A Rather Very Intelligent System
+			PokéPal
+			<div class="w-full text-red-300 tracking-widest text-center text-md font-mono">
+				Say my name to start and i'll be able to teach you stuff about pokemon
 			</div>
 		</h1>
 		<div
-			class="flex-auto w-full bg-gray-900/50 border shadow-lg border-cyan-200 shadow-cyan-300 p-4 overflow-y-auto flex flex-col gap-4"
+			class="flex-auto w-full bg-gray-900/50 border shadow-lg border-red-200 shadow-red-300 p-4 overflow-y-auto flex flex-col gap-4"
 		>
 			<div class="flex flex-col gap-2">
 				<ChatMessage type="assistant" message="Hello, how may I assist you today?" />
@@ -142,18 +142,18 @@
 			<div class="" bind:this={scrollToDiv} />
 		</div>
 		<form
-			class="flex flex-col w-full rounded-b-3xl gap-4 bg-gray-900/50 p-4 shadow-lg shadow-cyan-300 border-cyan-200 border-t-0 border"
+			class="flex flex-col w-full rounded-b-3xl gap-4 bg-gray-900/50 p-4 shadow-lg shadow-red-300 border-red-200 border-t-0 border"
 			on:submit|preventDefault={() => handleSubmit()}
 		>
 			<div class="flex flex-row gap-5 w-full">
 				<input
 					type="text"
-					class="w-full rounded-full bg-gray-600 text-cyan-300 focus:ring-0 focus:border-0 border-0"
+					class="w-full rounded-full bg-gray-600 text-red-300 focus:ring-0 focus:border-0 border-0"
 					bind:value={query}
 				/>
 				<button
 					type="submit"
-					class="text-cyan-300 shadow-md border border-cyan-300/50 hover:bg-gray-600/10 shadow-cyan-300 px-4 py-1 rounded-xl"
+					class="text-red-300 shadow-md border border-red-300/50 hover:bg-gray-600/10 shadow-red-300 px-4 py-1 rounded-xl"
 				>
 					Send
 				</button>
