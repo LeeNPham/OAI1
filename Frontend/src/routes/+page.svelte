@@ -94,7 +94,7 @@
 </script>
 
 <svelte:head>
-	<title>J.A.R.V.I.S</title>
+	<title>PokéPal</title>
 	<meta name="description" content="Go look at me! my github is /leenpham" />
 </svelte:head>
 
