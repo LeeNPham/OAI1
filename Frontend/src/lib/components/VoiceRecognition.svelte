@@ -10,7 +10,7 @@
 	let transcript = '';
 	let transcriptDispatched = false;
 	let recognition: SpeechRecognition | null = null;
-	let wakeWord = 'jarvis';
+	let wakeWord = 'pal';
 	let silenceTimeout: NodeJS.Timeout | null = null;
 
 	// Function to start recording
@@ -31,7 +31,7 @@
 					transcriptDispatched = false;
 					clearTimeout(silenceTimeout);
 					transcript = spokenText
-						.substring(spokenText.indexOf(wakeWord) - 6 + wakeWord.length)
+						.substring(spokenText.indexOf(wakeWord) - 3 + wakeWord.length)
 						.trim();
 				}
 
