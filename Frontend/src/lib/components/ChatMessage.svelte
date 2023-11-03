@@ -11,7 +11,7 @@
 
 	<div class="p-2">
 		<div class="text-white text-sm {type === 'user' ? 'text-end' : ''}">
-			{type === 'user' ? 'Me' : 'PokePal'}
+			{type === 'user' ? 'Trainer' : 'PokePal'}
 		</div>
 		<div
 			class="px-5 py-2 indent-4 {type === 'user'

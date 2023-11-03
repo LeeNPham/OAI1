@@ -112,7 +112,6 @@
 				alt="avatar"
 			/>
 		</div>
-		<JarvisTriangle />
 	</div>
 	<div
 		class="absolute bg-black sm:bg-black/80 lg:bg-transparent h-full flex flex-col max-w-[739px]"
@@ -122,7 +121,7 @@
 		>
 			PokéPal
 			<div class="w-full text-red-300 tracking-widest text-center text-md font-mono">
-				Say my name to start and i'll be able to teach you stuff about pokemon
+				Say my name to start and I'll be able to teach you stuff about pokemon
 			</div>
 		</h1>
 		<div

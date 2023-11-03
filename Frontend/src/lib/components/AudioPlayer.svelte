@@ -52,7 +52,7 @@
 		class="h-14 min-w-14 rounded-full object-cover aspect-square {type === 'user'
 			? ''
 			: 'mix-blend-exclusion'}"
-		src={type === 'user' ? 'https://ui-avatars.com/api/?name=Me' : jarvisDefault}
+		src={type === 'user' ? 'https://ui-avatars.com/api/?name=Trainer' : jarvisDefault}
 		alt="{type} avatar"
 	/></button
 >
