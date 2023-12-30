@@ -32,6 +32,16 @@
 								showJarvis = true;
 							}}>Open Jarvis</button
 						>
+						<div
+							transition:fly={{ x: 200, duration: 1000 }}
+							class="absolute top-40 right-0 mt-16 -mr-40 text-cyan-300 font-bold shadow-md border border-cyan-300/50 shadow-cyan-300 px-4 py-1 rounded-xl"
+						>
+							To use Jarvis to its full capability, please allow browser access to your microphone
+							and location information. This will allow JARVIS to tell you about your current local
+							weather and time, as well for you to use our Text-To-Speech feature. To Activate the
+							Text-To-Speech feature, simply mention "JARVIS" before asking the system your
+							question.
+						</div>
 					{/if}
 				</div>
 			</div>
