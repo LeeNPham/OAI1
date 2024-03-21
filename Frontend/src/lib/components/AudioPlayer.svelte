@@ -8,46 +8,70 @@
 
 	async function convertTextToSpeech() {
 		try {
-			const response = await axios.post(
-				`https://api.elevenlabs.io/v1/text-to-speech/${PUBLIC_VOICE_ID}/stream`,
-				{
-					text: message,
-					model_id: 'eleven_monolingual_v1',
-					voice_settings: {
-						stability: 0.5,
-						similarity_boost: 0.5
-					}
-				},
-				{
-					headers: {
-						Accept: 'audio/mpeg',
-						'Content-Type': 'application/json',
-						'xi-api-key': PUBLIC_ELEVEN_LABS
+			if (type === 'user') {
+				const response = await axios.post(
+					`https://api.elevenlabs.io/v1/text-to-speech/${PUBLIC_VOICE_ID}/stream`,
+					{
+						text: message,
+						model_id: 'eleven_monolingual_v1',
+						voice_settings: {
+							stability: 0.5,
+							similarity_boost: 0.5
+						}
 					},
-					responseType: 'arraybuffer'
-				}
-			);
+					{
+						headers: {
+							Accept: 'audio/mpeg',
+							'Content-Type': 'application/json',
+							'xi-api-key': PUBLIC_ELEVEN_LABS
+						},
+						responseType: 'arraybuffer'
+					}
+				);
+			} else {
+				const response = await axios.post(
+					`https://api.elevenlabs.io/v1/text-to-speech/${PUBLIC_VOICE_ID}/stream`,
+					{
+						text: message,
+						model_id: 'eleven_monolingual_v1',
+						voice_settings: {
+							stability: 0.5,
+							similarity_boost: 0.5
+						}
+					},
+					{
+						headers: {
+							Accept: 'audio/mpeg',
+							'Content-Type': 'application/json',
+							'xi-api-key': PUBLIC_ELEVEN_LABS
+						},
+						responseType: 'arraybuffer'
+					}
+				);
 
-			const audioBlob = new Blob([response.data], { type: 'audio/mpeg' });
-			const audioUrl = URL.createObjectURL(audioBlob);
+				const audioBlob = new Blob([response.data], { type: 'audio/mpeg' });
+				const audioUrl = URL.createObjectURL(audioBlob);
 
-			const audioElement = new Audio();
-			audioElement.src = audioUrl;
-			audioElement.controls = true;
-			audioElement.play();
+				const audioElement = new Audio();
+				audioElement.src = audioUrl;
+				audioElement.controls = true;
+				audioElement.play();
+			}
 		} catch (error) {
 			console.error('Error converting text to speech:', error);
 		}
 	}
 
 	onMount(() => {
-		if (type === 'assistant' && message !== 'Loading..') {
+		if (message !== 'Loading..') {
 			convertTextToSpeech();
 		}
 	});
 </script>
 
-<button class="min-w-[60px]" on:click={convertTextToSpeech}
+<button
+	class="min-w-[60px] {type === 'user' ? 'pointer-events-none' : ''}"
+	on:click={convertTextToSpeech}
 	><img
 		class="h-14 min-w-14 rounded-full object-cover aspect-square {type === 'user'
 			? ''
